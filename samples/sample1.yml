@@ -1,0 +1,9 @@
+Sample1:
+  exe: Sample1
+  fixed_args: -m 10000
+  v_options: 
+    - opt: p
+      val: [64, 128, 256]
+    - opt: B
+      val: [100, 500, 1000, 5000, 10000]
+

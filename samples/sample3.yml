@@ -1,0 +1,19 @@
+Sample3:
+  exe: Sample3
+  fixed_args: -m 10000
+  v_options: 
+    - opt: p
+      val:
+        type: exponential
+        base: 2
+        exponents:
+          val:
+            start: 6
+            end: 8
+            step: 1
+    - opt: B
+      val:
+        type: linear
+        start: 100
+        end: 1000
+        number: 11

@@ -1,0 +1,11 @@
+test_ls:
+  exe: ls
+  fixed_args: -la
+
+test_ps:
+  exe: ps 
+  fixed_args: -ef
+
+test_df:
+  exe: df 
+  fixed_args: -h
