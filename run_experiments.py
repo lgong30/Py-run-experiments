@@ -9,6 +9,7 @@ import numpy as np
 from copy import deepcopy
 import itertools
 import sys
+import os.path
 
 VERSION = (0, 1, 0, 'beta', 0)
 
@@ -54,7 +55,7 @@ O_Serenade_1:
 
 """
 def load_experiments(exp_conf, redirect=True):
-    if exp_conf.endswith(".yml"):
+    if exp_conf.endswith(".yml") or exp_conf.endswith(".yaml"):
         loader = yaml.safe_load
     elif exp_conf.endswith(".json"):
         loader = json.load
@@ -69,9 +70,10 @@ def load_experiments(exp_conf, redirect=True):
     exp_template_fixed = '{exe} {fixed_args}'
     exp_template_var = ' -{opt} {val}'
     exp_template_outred = ' >{output_file}'
-    experiments = []
-    for exp_family_id, exp_family in data.iteritems():
 
+    for exp_family_id, exp_family in data.iteritems():
+        if exp_family['exe'].startswith("."):
+            exp_family['exe'] = os.path.abspath(exp_family['exe'])
         if not (exp_family.has_key('v_options')):
             # experiments.append(exp_template_fixed.format(**exp_family))
             if not redirect:
